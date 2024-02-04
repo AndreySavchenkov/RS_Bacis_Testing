@@ -1,17 +1,29 @@
-// Uncomment the code below and write your tests
-/* import {  simpleCalculator, Action } from './index';
+import { simpleCalculator, Action } from './index';
 
 const testCases = [
-    { a: 1, b: 2, action: Action.Add, expected: 3 },
-    { a: 2, b: 2, action: Action.Add, expected: 4 },
-    { a: 3, b: 2, action: Action.Add, expected: 5 },
-    // continue cases for other actions    
-]; */
+  { a: 1, b: 2, action: Action.Add, expected: 3 },
+  { a: 2, b: 2, action: Action.Add, expected: 4 },
+  { a: 3, b: 2, action: Action.Add, expected: 5 },
+  { a: 3, b: 2, action: Action.Subtract, expected: 1 },
+  { a: 2, b: 2, action: Action.Subtract, expected: 0 },
+  { a: 13, b: 2, action: Action.Subtract, expected: 11 },
+  { a: 12, b: 2, action: Action.Divide, expected: 6 },
+  { a: 10, b: 5, action: Action.Divide, expected: 2 },
+  { a: 100, b: 2, action: Action.Divide, expected: 50 },
+  { a: 100, b: 2, action: Action.Multiply, expected: 200 },
+  { a: 70, b: 2, action: Action.Multiply, expected: 140 },
+  { a: 1, b: 2, action: Action.Multiply, expected: 2 },
+  { a: 6, b: 2, action: Action.Exponentiate, expected: 36 },
+  { a: 1, b: 2, action: Action.Exponentiate, expected: 1 },
+  { a: 5, b: 3, action: Action.Exponentiate, expected: 125 },
+  { a: 5, b: 3, action: 'invalid', expected: null },
+  { a: 'invalid', b: 3, action: Action.Multiply, expected: null },
+  { a: 5, b: 'invalid', action: Action.Multiply, expected: null },
+];
 
-describe('simpleCalculator', () => {
-  // This test case is just to run this test suite, remove it when you write your own tests
-  test('should blah-blah', () => {
-    expect(true).toBe(true);
+describe.each(testCases)('simpleCalculator', ({ a, b, action, expected }) => {
+  test(`${a} ${action} ${b} should ${expected}`, () => {
+    const result = simpleCalculator({ a, b, action });
+    expect(result).toBe(expected);
   });
-  // Consider to use Jest table tests API to test all cases above
 });
